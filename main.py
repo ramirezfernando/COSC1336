@@ -29,16 +29,28 @@ def find_anagram(dict, wish_to_find):
 
 # FOR 2
 def anagram_groups_by_word_length(length_of_words):
+  # THIS CONTAINS LISTS INSIDE LISTS
   anagram_list_by_length = []
   for word in words[length_of_words]:
-    for other_word in words[length_of_words]:
-      if word != other_word and (sorted(word) == sorted(other_word)):
-        anagram_list_by_length.append((word,other_word))
+    for other_words in words[length_of_words]:
+      if (word, other_words) not in anagram_list_by_length and word != other_words and (sorted(word) == sorted(other_words)):
+        anagram_list_by_length.append((word, other_words))
         #print(word,other_word)
       else:
         pass
-  return anagram_list_by_length
+  # REMOVING LISTS INSIDE AND REPEATING WORDS
+  anagrams = []
+  for lists in anagram_list_by_length:
+    for stuff in lists:
+      if stuff in anagrams:
+        pass
+      else:
+        anagrams.append(stuff)
   
+  return anagrams
+  #return anagram_list_by_length
+
+
 
 
 
