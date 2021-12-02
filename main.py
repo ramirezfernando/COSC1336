@@ -28,6 +28,13 @@ def find_anagram(dict, wish_to_find):
   print(anagram_list)
 
 # FOR 2
+
+ 
+ 
+
+ 
+
+
 def anagram_groups_by_word_length(length_of_words):
   # THIS CONTAINS LISTS INSIDE LISTS
   list_with_lists = []
@@ -46,7 +53,33 @@ def anagram_groups_by_word_length(length_of_words):
         pass
       else:
         list_without_lists.append(stuff)
-  return list_without_lists
+  def createAnagramKey(string):
+    key = ''
+    for ch in sorted(string):
+        key += ch
+    return str(key)
+
+  def groupAnagramWords(data):
+    group = {}
+    for ele in list_without_lists:
+        if group.get(createAnagramKey(ele)) == None:
+            group[createAnagramKey(ele)] = [ele]
+        else:
+            group[createAnagramKey(ele)].append(ele)
+    return group
+ 
+  anagram_grouped = groupAnagramWords(list_without_lists)
+
+  
+  anagram_grouped_list = []
+  
+  for k, v in anagram_grouped.items():
+      anagram_grouped_list.append(v)
+  print('In list format')
+  #print(anagram_grouped_list)
+
+  return anagram_grouped_list
+  #return list_without_lists
   #return list_with_lists
 
 
