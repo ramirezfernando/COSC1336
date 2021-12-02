@@ -65,12 +65,31 @@ def anagram_groups_by_word_length(length_of_words):
   
   for k, v in anagram_grouped.items():
       anagram_grouped_list.append(v)
-  for items in anagram_grouped_list:
-    print(items)
-  #return anagram_grouped_list
+  return anagram_grouped_list
   
-  # FOR 3
-  
+# FOR 3
+entire_anagram_list = []
+length_list = [3]
+#length_list = [2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+for nums in length_list:
+  entire_anagram_list.extend(anagram_groups_by_word_length(nums))
+  #entire_anagram_list.append(anagram_groups_by_word_length(nums))
+print(entire_anagram_list)
+
+def find_anagram_group_size():
+  group_dict = {}
+  for lists in entire_anagram_list: 
+    counter = 0
+    for words in lists:
+      counter += 1
+    print([counter, lists])
+    #group_dict[counter].append(lists)
+  #return group_dict
+    
+find_anagram_group_size()    
+    
+
+
 
 def output():
   print("**************************************************" "\n"
@@ -88,7 +107,6 @@ if selection == "1":
   if wish_to_find in words[len(wish_to_find)]:
     print("The anagrams for {} are: ".format(wish_to_find))
     find_anagram(words, wish_to_find)
-    
   else:
     print("Sorry, >>{}<< was not found.".format(wish_to_find))
    
@@ -97,12 +115,18 @@ if selection == "2":
   length_list = [2,3,4,5,6,7,8,9,10,11,12,13,14,15]
   length_of_words = int(input("Please enter the length of the words to display(2-15): "))
   if length_of_words in length_list:
-    print(anagram_groups_by_word_length(length_of_words))
-    print("I found it")
-    
+    for items in anagram_groups_by_word_length(length_of_words):
+      print(items)
   else:
     print("Sorry, >>{}<< is not a valid word length.".format(length_of_words))
-    
+
+if selection == "3":
+  size = int(input("Please enter the anagram group size (1-#): "))
+  print("The {}-word groups are: ".format(size))
+  
+
+if selection == "0":
+  pass
 
 
 
